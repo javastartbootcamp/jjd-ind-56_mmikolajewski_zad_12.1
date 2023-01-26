@@ -23,7 +23,7 @@ class Main {
                 double x = simplyMathematicLines[i].getX();
                 String operator = simplyMathematicLines[i].getOperator();
                 double y = simplyMathematicLines[i].getY();
-                //bufferedWriter.write("\n" + simplyMathematicLines[i] + " = " + Calculator.count(x, operator, y));
+                fileWriter.write(simplyMathematicLines[i] + " = " + Calculator.count(x, operator, y) + "\n");
             }
 
         } catch (IOException e) {
