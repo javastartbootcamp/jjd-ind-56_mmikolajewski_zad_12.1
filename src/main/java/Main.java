@@ -1,33 +1,39 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.io.*;
 
 class Main {
-
     public static void main(String[] args) throws FileNotFoundException {
         // uzupełnij rozwiązanie
-
         String fileName = "operations.txt";
-        int linesNumberInFile = TextUtils.countFilesLines(fileName);
-        String[] countedLines = new String[linesNumberInFile];
+        File file = new File(fileName);
+        SimplyMathematicLine[] simplyMathematicLines;
 
         try {
-            Scanner scanner = new Scanner(new File(fileName));
-
-            while (scanner.hasNextLine()) {
-                int stringNumber = 0;
-                String line = scanner.nextLine();
-                MathOperationLine mathOperationLine = TextUtils.extractDigitsFromLineToObject(line);
-                double result = Calculator.count(mathOperationLine.getX(), mathOperationLine.getOperator(), mathOperationLine.getY());
-                String countedMathOperation = TextUtils.stickResultToMathOperation(mathOperationLine, result);
-                System.out.println(countedMathOperation);
-
-                countedLines[stringNumber] = countedMathOperation;
-                stringNumber += 1;
-
-            }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException("Nie udało sie wczytać pliku: " + fileName);
+            file.createNewFile();
+            simplyMathematicLines = MathematicLineDataReader.readFile(fileName);
+            DataPrinter.printData(simplyMathematicLines);
+            DataPrinter.printDataAndCountResult(simplyMathematicLines);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
+
+        try (
+                FileWriter fileWriter = new FileWriter(file, false);
+                BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
+            for (int i = 0; i < simplyMathematicLines.length; i++) {
+                double x = simplyMathematicLines[i].getX();
+                String operator = simplyMathematicLines[i].getOperator();
+                double y = simplyMathematicLines[i].getY();
+                //bufferedWriter.write("\n" + simplyMathematicLines[i] + " = " + Calculator.count(x, operator, y));
+            }
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }
+//        1 + 2
+//        2 + 2
+//        3 - 1
+//        2 * 4
+//        11 / 2

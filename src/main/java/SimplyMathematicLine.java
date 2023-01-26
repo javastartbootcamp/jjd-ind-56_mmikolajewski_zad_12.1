@@ -1,19 +1,20 @@
-public class MathOperationLine {
-    private double x;
+@SuppressWarnings("checkstyle:EmptyLineSeparator")
+public class SimplyMathematicLine {
+    private int x;
     private String operator;
-    private double y;
+    private int y;
 
-    public MathOperationLine(double x, String operator, double y) {
+    public SimplyMathematicLine(int x, String operator, int y) {
         this.x = x;
         this.operator = operator;
         this.y = y;
     }
 
-    public double getX() {
+    public int getX() {
         return x;
     }
 
-    public void setX(double x) {
+    public void setX(int x) {
         this.x = x;
     }
 
@@ -25,17 +26,16 @@ public class MathOperationLine {
         this.operator = operator;
     }
 
-    public double getY() {
+    public int getY() {
         return y;
     }
 
-    public void setY(double y) {
+    public void setY(int y) {
         this.y = y;
     }
 
     @Override
     public String toString() {
-        return x + " " + operator + " " + y;
+        return  x + " " + operator + " " +  y;
     }
 }
-
