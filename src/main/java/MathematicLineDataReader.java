@@ -18,9 +18,9 @@ public class MathematicLineDataReader {
 
     private static SimplyMathematicLine createMathOperationFromTxt(String txtLine) {
         String[] data = txtLine.split(" ");
-        int x = Integer.parseInt(data[0]);
+        double x = Double.parseDouble(data[0]);
         String operator = data[1];
-        int y = Integer.parseInt(data[2]);
+        double y = Double.parseDouble(data[2]);
         return new SimplyMathematicLine(x, operator, y);
     }
 

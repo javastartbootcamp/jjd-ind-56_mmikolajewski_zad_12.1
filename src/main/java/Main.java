@@ -18,14 +18,14 @@ class Main {
 
         try (
                 FileWriter fileWriter = new FileWriter(file, false);
-                BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
-            for (int i = 0; i < simplyMathematicLines.length; i++) {
-                double x = simplyMathematicLines[i].getX();
-                String operator = simplyMathematicLines[i].getOperator();
-                double y = simplyMathematicLines[i].getY();
-                fileWriter.write(simplyMathematicLines[i] + " = " + Calculator.count(x, operator, y) + "\n");
+                BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)
+        ) {
+            for (SimplyMathematicLine simplyMathematicLine : simplyMathematicLines) {
+                double x = simplyMathematicLine.getX();
+                String operator = simplyMathematicLine.getOperator();
+                double y = simplyMathematicLine.getY();
+                bufferedWriter.write(simplyMathematicLine + " = " + Calculator.count(x, operator, y) + "\n");
             }
-
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
