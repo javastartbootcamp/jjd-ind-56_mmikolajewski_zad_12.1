@@ -1,6 +1,6 @@
 public class Calculator {
 
-    static double count(double x, String operator, double y) {
+    static double calculate(double x, String operator, double y) {
         double result = 0;
         switch (operator) {
             case "+" -> result += x + y;
