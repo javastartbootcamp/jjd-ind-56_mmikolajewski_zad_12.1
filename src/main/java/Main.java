@@ -5,19 +5,20 @@ class Main {
         // uzupełnij rozwiązanie
         String fileName = "operations.txt";
         File file = new File(fileName);
-        SimplyMathematicLine[] simplyMathematicLines;
 
         String fileResultName = "result.txt";
         File resultFile = new File(fileResultName);
 
         try {
             file.createNewFile();
-            simplyMathematicLines = MathematicLineDataReader.readFile(fileName);
-            DataWriter.writeResultToFile(simplyMathematicLines, resultFile);
+            SimplyMathematicLine[] simplyMathematicalLines = MathematicLineDataReader.readFile(fileName);
+            DataWriter.writeResultToFile(simplyMathematicalLines, resultFile);
+            for (SimplyMathematicLine simplyMathematicalLine : simplyMathematicalLines) {
+                System.out.println(simplyMathematicalLine);
+            }
         } catch (IOException e) {
             System.out.println("Nie udało się wczytać pliku");
         }
-
     }
 }
 //        1 + 2

@@ -25,6 +25,6 @@ public class SimplyMathematicLine {
 
     @Override
     public String toString() {
-        return  x + " " + operator + " " +  y + " = " + result + "";
+        return  x + " " + operator + " " +  y + " = " + result + "\n";
     }
 }
